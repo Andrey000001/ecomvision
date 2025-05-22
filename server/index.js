@@ -10,30 +10,38 @@ import generalRoutes from './routes/general.js';
 import managementRoutes from './routes/management.js';
 import salesRoutes from './routes/sales.js';
 
+//data imports
+import User from './models/User.js';
+import { dataUser } from './data/index.js';
+
 /*CONFIGURATION*/
-dotenv.config()
+dotenv.config();
 const app = express();
-app.use(express.json())
-app.use(helmet())
-app.use(helmet.crossOriginResourcePolicy({police: "cross-origin"}))
-app.use(morgan("common"))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(cors())
+app.use(express.json());
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ police: 'cross-origin' }));
+app.use(morgan('common'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 /*ROUTES*/
-app.use('/client',clientRoutes)
-app.use('/general',generalRoutes)
-app.use('/managment',managementRoutes)
-app.use('/sales',salesRoutes)
-
+app.use('/client', clientRoutes);
+app.use('/general', generalRoutes);
+app.use('/managment', managementRoutes);
+app.use('/sales', salesRoutes);
 
 /*MONGOOSE SETUP*/
-const PORT = process.env.PORT || 9000
-mongoose.connect(process.env.MONGO_URL).then((req,res) => {
-    app.listen(PORT,() => {
-        console.log(`Server is running on port ${PORT}`)
-    })
-}).catch((error) => {
-    console.log(`${error} did not connect`)
-})
+const PORT = process.env.PORT || 9000;
+mongoose
+  .connect(process.env.MONGO_URL)
+  .then((req, res) => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+
+      //   User.insertMany(dataUser);
+    });
+  })
+  .catch((error) => {
+    console.log(`${error} did not connect`);
+  });
