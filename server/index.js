@@ -12,34 +12,47 @@ import salesRoutes from './routes/sales.js';
 
 //data imports
 import User from './models/User.js';
-import { dataUser } from './data/index.js';
+import Product from './models/Product.js';
+import ProductStat from './models/ProductStat.js';
+import Transaction from './models/Transaction.js';
+import { dataUser, dataProduct, dataProductStat, dataTransaction } from './data/index.js';
 
 /*CONFIGURATION*/
 dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(helmet());
-app.use(helmet.crossOriginResourcePolicy({ police: 'cross-origin' }));
+app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 app.use(morgan('common'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
-
+app.use((req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
+  next();
+});
 /*ROUTES*/
 app.use('/client', clientRoutes);
 app.use('/general', generalRoutes);
-app.use('/managment', managementRoutes);
+app.use('/management', managementRoutes);
 app.use('/sales', salesRoutes);
 
 /*MONGOOSE SETUP*/
 const PORT = process.env.PORT || 9000;
 mongoose
   .connect(process.env.MONGO_URL)
-  .then((req, res) => {
+  .then(() => {
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
 
-      //   User.insertMany(dataUser);
+      //ADD THIS ONE TIME FOR DATA BASE
+      // User.insertMany(dataUser);
+      // Product.insertMany(dataProduct);
+      // ProductStat.insertMany(dataProductStat);
+      // User.insertMany(dataUser);
+      // Transaction.insertMany(dataTransaction);
     });
   })
   .catch((error) => {
