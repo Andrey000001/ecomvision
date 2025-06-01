@@ -9,13 +9,20 @@ import clientRoutes from './routes/client.js';
 import generalRoutes from './routes/general.js';
 import managementRoutes from './routes/management.js';
 import salesRoutes from './routes/sales.js';
-
 //data imports
 import User from './models/User.js';
 import Product from './models/Product.js';
 import ProductStat from './models/ProductStat.js';
 import Transaction from './models/Transaction.js';
-import { dataUser, dataProduct, dataProductStat, dataTransaction } from './data/index.js';
+import AffiliateStat from './models/AffiliateStat.js';
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+  dataOverallStat,
+  dataAffiliateStat,
+} from './data/index.js';
 
 /*CONFIGURATION*/
 dotenv.config();
@@ -48,6 +55,8 @@ mongoose
       console.log(`Server is running on port ${PORT}`);
 
       //ADD THIS ONE TIME FOR DATA BASE
+      // AffiliateStat.insertMany(dataAffiliateStat)
+      // OverallStat.insertMany(dataOverallStat);
       // User.insertMany(dataUser);
       // Product.insertMany(dataProduct);
       // ProductStat.insertMany(dataProductStat);
