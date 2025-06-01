@@ -58,6 +58,7 @@ const Transactions = () => {
       renderCell: (params) => `${Number(params.value).toFixed(2)}`,
     },
   ];
+  
   const visibleColumns = columns.filter((col) => columnVisibility[col.field] !== false);
 
   const handleExport = () => {

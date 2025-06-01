@@ -20,7 +20,6 @@ import {
   ShoppingCartOutlined,
   Groups2Outlined,
   ReceiptLongOutlined,
-  PublicOffOutlined,
   PointOfSaleOutlined,
   TodayOutlined,
   CalendarMonthOutlined,
@@ -28,7 +27,6 @@ import {
   TrendingUpOutlined,
   PieChartOutline,
   PublicOutlined,
-  Palette,
 } from '@mui/icons-material';
 
 import { useEffect, useState } from 'react';
@@ -90,14 +88,14 @@ const navItems = [
     icon: <AdminPanelSettingsOutlined />,
   },
   {
-    text: 'Performans',
+    text: 'Performance',
     icon: <TrendingUpOutlined />,
   },
 ];
 
 const Sidebar = ({ user, drawerWidth, isSidebarOpen, setIsSidebarOpen, isNonMobile }) => {
   const { pathname } = useLocation();
-  const [active, setActive] = useState();
+  const [active, setActive] = useState('');
   const navigate = useNavigate();
   const theme = useTheme();
 
