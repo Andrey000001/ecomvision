@@ -56,6 +56,9 @@ const Customers = () => {
         mt="40px"
         height="75vh"
         sx={{
+          '& .MuiDataGrid-columnHeaders .MuiDataGrid-columnHeader , .MuiDataGrid-scrollbarFiller': {
+            backgroundColor: theme.palette.background.alt,
+          },
           '& .MuiDataGrid-root': {
             border: 'none',
           },

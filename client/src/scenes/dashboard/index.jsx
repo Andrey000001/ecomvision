@@ -117,6 +117,10 @@ const Dashboard = () => {
           gridColumn="span 8"
           gridRow="span 3"
           sx={{
+            '& .MuiDataGrid-columnHeaders .MuiDataGrid-columnHeader , .MuiDataGrid-scrollbarFiller':
+              {
+                backgroundColor: theme.palette.background.alt,
+              },
             '& .MuiDataGrid-root': {
               border: 'none',
               borderRadius: '5px',

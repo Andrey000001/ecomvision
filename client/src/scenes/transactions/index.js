@@ -58,7 +58,7 @@ const Transactions = () => {
       renderCell: (params) => `${Number(params.value).toFixed(2)}`,
     },
   ];
-  
+
   const visibleColumns = columns.filter((col) => columnVisibility[col.field] !== false);
 
   const handleExport = () => {
@@ -87,13 +87,17 @@ const Transactions = () => {
     link.click();
     document.body.removeChild(link);
   };
-
+  //css-1vvsigd-MuiDataGrid-root .MuiDataGrid-row--borderBottom .MuiDataGrid-columnHeader
   return (
     <Box m="1.5rem 2.5rem">
       <Header title="TRANSACTIONS" subtitle="Entire list of transactions" />
       <Box
-        height="80vh"
+        height="75vh"
         sx={{
+          '& .MuiDataGrid-columnHeaders .MuiDataGrid-columnHeader , .MuiDataGrid-scrollbarFiller': {
+            backgroundColor: theme.palette.background.alt,
+          },
+
           '& .MuiDataGrid-root': {
             border: 'none',
           },
@@ -101,8 +105,8 @@ const Transactions = () => {
             borderBottom: 'none',
           },
           '& .MuiDataGrid-columnHeaders': {
-            backgroundColor: `#e3f2fd !important`,
-            color: `${theme.palette.secondary[100]}`,
+            backgroundColor: theme.palette.background.alt,
+            color: theme.palette.secondary[100],
             borderBottom: 'none',
           },
           '& .MuiDataGrid-virtualScroller': {

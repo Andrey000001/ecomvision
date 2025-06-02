@@ -12,6 +12,7 @@ import {
   Typography,
   useTheme,
 } from '@mui/material';
+
 import {
   SettingsOutlined,
   ChevronLeft,
@@ -189,9 +190,9 @@ const Sidebar = ({ user, drawerWidth, isSidebarOpen, setIsSidebarOpen, isNonMobi
               })}
             </List>
           </Box>
-          <Box position="absolute" bottom="2rem">
+          <Box bottom="2rem">
             <Divider />
-            <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
+            <FlexBetween textTransform="none" gap="1rem"  m="1.5rem 2rem 1.5rem 3rem">
               <Box
                 component="img"
                 alt="profile"
